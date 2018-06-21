@@ -51,18 +51,18 @@ class Register extends React.Component {
 					if(user.id) {
 						this.props.loadUser(user); //load user profile
 						this.props.onRouteChange('home'); //go to app home page
-					} else if(user === 'unable to register') {
-						//no connection to database
-						//remove child first if there is one
-						const p_parent_div = document.getElementById('register-notification');
-						if(p_parent_div.firstChild !== null) {
-							p_parent_div.removeChild(p_parent_div.firstChild);
-						}
-						//add child next
-						p_element.appendChild(document.createTextNode('unexpected error'));
-						p_element.setAttribute('class', 'red b grow shrink'); //tachyons
-						p_parent_div.appendChild(p_element);
-					}
+					 } // else if(user === 'unable to register') {
+					// 	//no connection to database
+					// 	//remove child first if there is one
+					// 	const p_parent_div = document.getElementById('register-notification');
+					// 	if(p_parent_div.firstChild !== null) {
+					// 		p_parent_div.removeChild(p_parent_div.firstChild);
+					// 	}
+					// 	//add child next
+					// 	p_element.appendChild(document.createTextNode('unexpected error'));
+					// 	p_element.setAttribute('class', 'red b grow shrink'); //tachyons
+					// 	p_parent_div.appendChild(p_element);
+					// }
 					else {
 						 //email was not left blank, possible that email is already registered
 						//remove child first if there is one
