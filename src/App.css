@@ -30,3 +30,22 @@
     align-items: center;
   }
 }
+
+/************
+LOADING
+************/
+.App-loading {
+  -webkit-animation: App-loading-spin infinite 1.5s linear;
+          animation: App-loading-spin infinite 1.5s linear;
+  height: 24px;
+  margin-top: 50px;
+}
+
+.App-loading-header {
+  margin-bottom: 50px;
+}
+
+@keyframes App-loading-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

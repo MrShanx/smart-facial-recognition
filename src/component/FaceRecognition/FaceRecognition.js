@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './FaceRecognition.css';
 import FaceRecognitionList from '../FaceRecognitionList/FaceRecognitionList.js';
 
-
 class FaceRecognition extends Component {
 //({ imageUrl, box, instruction }) => {
 	constructor(props) {
@@ -24,24 +23,24 @@ class FaceRecognition extends Component {
 				<p className="instruct_slide-up">no image, face, stats detected</p>
 			</div>		
 		) :
-		(
-						<div className="center instruct-container">
-							<p className="instruct_slide-up pb4">{instruction}</p>
-							<div className="mt5 pt2 absolute">
-								<img id="inputImage" alt="" src={imageUrl} width="500px" height="auto" />
-								 {   
-								 	stats.map((face_data) => {
-										return (
-											<FaceRecognitionList 
-												key={face_data.statIndex} //has to be unique
-												face_box={face_data} 
-												face_stats={face_data} />
-										)
-									})	
-								}		
-							</div>
+			  	(
+					<div className="center instruct-container">
+						<p className="instruct_slide-up pb4">{instruction}</p>
+						<div className="mt5 pt2 absolute">
+							<img id="inputImage" alt="" src={imageUrl} width="500px" height="auto" />
+							 {   
+							 	stats.map((face_data) => {
+									return (
+										<FaceRecognitionList 
+											key={face_data.statIndex} //has to be unique
+											face_box={face_data} 
+											face_stats={face_data} />
+									)
+								})	
+							}		
 						</div>
-					);
+					</div>
+				);
 	}
 }
 

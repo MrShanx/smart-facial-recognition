@@ -7,6 +7,7 @@ import Register from './component/Register/Register.js';
 import Logo from './component/Logo/Logo.js';
 import ImageLinkForm from './component/ImageLinkForm/ImageLinkForm.js';
 import Rank from './component/Rank/Rank.js';
+import load from './loadingIcon.png';
 
 import './App.css';
 
@@ -300,6 +301,7 @@ class App extends Component {
 
   render() {
     const { isSignedIn, imageUrl, route, instruction, stats, faceDetected } = this.state;
+    const { user, rankings } = this.state;
     return (
       <div className="App">
         <Particles 
@@ -311,21 +313,32 @@ class App extends Component {
           onRouteChange={this.onRouteChange}/>
         { 
           route === "home" 
-          ? (
-              //otherwise: route = app page, return everything
-              <div>
-                <Logo />
-                <Rank name={this.state.user.name} entries={this.state.user.entries} rankings={this.state.rankings} />
-              {/*this.onInputChange - since function is part of the class*/}
-                <ImageLinkForm 
-                  onInputChange={this.onInputChange} 
-                  onPictureSubmit={this.onPictureSubmit} />
-                <FaceRecognition     
-                  imageUrl={imageUrl} 
-                  instruction={instruction}
-                  stats={stats} 
-                  faceDetected={faceDetected} />
-              </div>
+          ? ( 
+              user.name === "" || rankings.firstName === "" //user or rankings not yet loaded
+              ? ( 
+                  <div>
+                    <Logo />
+                    <div className="App-content">
+                      <img className="App-loading" src={load} alt={'load'} />
+                      <h1 className="App-loading-header">App Loading</h1>
+                    </div>
+                  </div>
+                ) : (
+                    //otherwise: route = app page, return everything
+                    <div>
+                      <Logo />
+                      <Rank name={this.state.user.name} entries={this.state.user.entries} rankings={this.state.rankings} />
+                    {/*this.onInputChange - since function is part of the class*/}
+                      <ImageLinkForm 
+                        onInputChange={this.onInputChange} 
+                        onPictureSubmit={this.onPictureSubmit} />
+                      <FaceRecognition     
+                        imageUrl={imageUrl} 
+                        instruction={instruction}
+                        stats={stats} 
+                        faceDetected={faceDetected} />
+                    </div>
+                    )
             )
           : (
             //goes to register if route != signin || home
