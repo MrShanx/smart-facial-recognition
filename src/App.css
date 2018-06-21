@@ -1,0 +1,32 @@
+.App {
+  text-align: center;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.particles {
+/*  puts particles on the background not on top
+*/position: fixed;
+  top:0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  /* used when position fixed/absolute is used
+  to make background below all components */
+  z-index: -1;
+}
+
+/* FOR LOGO IN MOBILE */
+@media only screen and (max-width: 500px) {
+  .Tilt-container {
+    display: flex;
+    justify-content: center;
+  }
+  .Tilt {
+    margin: 0;
+    align-items: center;
+  }
+}

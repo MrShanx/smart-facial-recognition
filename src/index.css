@@ -1,0 +1,12 @@
+body {
+  margin: 0;
+  padding: 0;
+  /* 100% full view height */
+  height: 100vh;
+  font-family: "Courier New", Courier, monospace;
+  background: linear-gradient(to right, rgba(150,154,0,1), rgba(255,0,0,.5));
+}
+
+button, a {
+	cursor: pointer;
+}
